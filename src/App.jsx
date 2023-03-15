@@ -4,8 +4,7 @@ import './App.css'
 
 const socket = io('http://localhost:4000');
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() {  
 
   return (
     <div className="App">
