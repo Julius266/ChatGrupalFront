@@ -80,3 +80,9 @@
 .div-chat > p {
   color: #fff;  
 }
+
+.txt-username {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #ff4500;
+}
