@@ -71,7 +71,7 @@
 .div-chat {
   width: 33rem;
   height: auto;
-  overflow-y: auto;
+  overflow-y: scroll;
   background: linear-gradient(90deg, #003b76, #567180);
   margin-bottom: 1rem;
   border-radius: 10px;
