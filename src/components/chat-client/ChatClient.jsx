@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './chatClient.css';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:4000');
-// const socket = io('*');
+// const socket = io('http://localhost:4000');
+const socket = io('https://chat-server-edwin-dev.onrender.com/');
 
 export const ChatClient = () => {
 
