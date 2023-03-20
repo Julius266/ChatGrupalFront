@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './chatClient.css';
 import io from 'socket.io-client';
 
-// const socket = io('http://localhost:4000');
-const socket = io('https://chat-server-edwin-dev.onrender.com/');
+const socket = io('http://localhost:4000');
+// const socket = io('https://chat-server-edwin-dev.onrender.com/');
 
 export const ChatClient = () => {
 
   // Estado que controla el mensaje actual  
   const [message, setMessage] = useState('');
+  const [username, setUserName] = useState('Machine');
 
   // estado para controlar la lista de mensajes
   const [listMessages, setListMessages] = useState([{
@@ -21,10 +22,10 @@ export const ChatClient = () => {
     e.preventDefault();
     // Para enviar, usaremos el evento emit, este enviará el mensaje por medio del socket
     // recibe dos parámetros: el primero es una cadena con el nombre del evento "message", y el segundo su valor
-    socket.emit('message', message);
+    socket.emit('message', {body: message, user: username});
     const newMsg = {
       body: message,
-      user: 'Me'
+      user: username
     }
     setListMessages([...listMessages,newMsg]);
     setMessage('');
@@ -44,6 +45,8 @@ export const ChatClient = () => {
 
   return (
     <>
+      <input onChange={event => setUserName(event.target.value)} className='txt-username' type="text" placeholder='username' />
+
       <div className='div-chat'>
         { listMessages.map( (message, idx) => (
           <p key={message+idx}>{message.user}: {message.body}</p>
