@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './chatClient.css';
 import io from 'socket.io-client';
+// 1. importo Picker
+import Picker from 'emoji-picker-react'
 
 // const socket = io('http://localhost:4000');
 const socket = io('https://chat-server-edwin-dev.onrender.com/');
@@ -10,12 +12,19 @@ export const ChatClient = () => {
   // Estado que controla el mensaje actual  
   const [message, setMessage] = useState('');
   const [username, setUserName] = useState('Machine');
+  // 2. estado de control para emojis
+  const [showPicker, setShowPicker] = useState(false);
+
+  // 3. función que asigna el emoji
+  const onEmojiClick = (emojiObject) => {
+    setMessage( prevInput => prevInput + emojiObject.emoji);
+    setShowPicker(false);
+  };
 
   // estado para controlar la lista de mensajes
   const [listMessages, setListMessages] = useState([{
       body: "Welcome to the chat room",
       user: "Machine",
-
     }]);
 
   const handleSubmit = (e) => {
@@ -56,11 +65,22 @@ export const ChatClient = () => {
     <form onSubmit={handleSubmit} className="form">
       <span className="title">Chat-io</span>
       <p className="description">Type your message.</p>
-      <div>
-        <input value={message} placeholder="Type your message" onChange={ e => setMessage(e.target.value)} type="text" name="text" id="chat-message" />
+      <div className='div-type-chat'>
+        <img
+          className="emoji-icon"
+          src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+          onClick={() => setShowPicker(!showPicker)} />
+        {showPicker && <Picker className="prueba" onEmojiClick={onEmojiClick} />} 
+        <input 
+          value={message}
+          placeholder="Type your message"
+          onChange={ e => setMessage(e.target.value)}          
+          type="text" name="text" id="chat-message"
+          className="input-style" 
+        />
         <button type="submit">Send</button>
       </div>
     </form>    
     </>
   )
-}
+}        

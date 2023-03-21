@@ -6,7 +6,7 @@
   background: linear-gradient(to right, #3f4c6b, #606c88);
   padding: 20px;
   border-radius: 10px;
-  width: 30rem;
+  width: 37.5rem;
 }
 
 .title {
@@ -26,25 +26,26 @@
 
 .form div {
   display: flex;
-  max-width: 28rem;
+  width: 100%;
   margin-top: 1rem;
-  column-gap: 0.5rem;
+  flex-wrap: wrap;  
 }
 
 .form div input {
   outline: none;
   line-height: 1.5rem;
   font-size: 0.875rem;
-  color: rgb(255 255 255 );
+  color: #e7650f;
   padding: 0.5rem 0.875rem;
   background-color: rgb(255 255 255 / 0.05);
   border: 1px solid rgba(253, 253, 253, 0.363);
   border-radius: 0.375rem;
   flex: 1 1 auto;
+  margin-top: 1rem;
 }
 
 .form div input::placeholder {
-  color: rgb(216, 212, 212);
+  color: rgb(95, 229, 12);
 }
 
 .form div input:focus {
@@ -69,8 +70,8 @@
 }
 
 .div-chat {
-  width: 33rem;
-  height: 10rem;  
+  width: 40rem;
+  height: 15rem;  
   overflow-y: scroll;
   background: linear-gradient(90deg, #003b76, #567180);
   margin-bottom: 1rem;
@@ -86,3 +87,23 @@
   font-size: 1.2rem;
   color: #ff4500;
 }
+
+.emoji-icon {
+  cursor: pointer;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.picker-container {
+  width: 90%;
+  height: 25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.input-style {
+  /* background-color: #003b76; */
+  color: red;
+  margin-right: 1rem;
+}
+
+
